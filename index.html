@@ -1,0 +1,82 @@
+
+<body>
+<h1>SVG page</h1>
+<svg>
+ <circle style="fill:blue" cx="20" cy="20" r='30'/>
+ <circle style="fill:yellow" cx='100' cy='100'  r="50"/>
+</svg>
+<p></p>
+
+<div class="bar">
+<div></div>
+</div>
+<button onclick="render('math')">Math</button>
+<button onclick="render('science')">Science</button>
+
+<style>
+.graph {
+ background: teal;
+ height: 20px;
+ margin-top: 10px;
+}
+</style>
+
+
+<script src="//d3js.org/d3.v5.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+setTimeout(changeColor, 1500);
+setTimeout(changeColor, 1500);
+
+
+console.log('loaded content')
+function changeColor(){
+ d3.select('svg').selectAll('circle').style('fill','#333');
+}
+
+function changeColorBack() {
+ d3.select('svg').selectAll('circle').style('fill','#333');
+}
+
+//document.querySelector('p').innerHTML = `loaded script`
+//document.querySelector('p').innerHTML = 'play';
+
+})
+
+const data = [
+    {
+        "name": "dave",
+        "science": 35,
+        "math": 100
+    },
+    {
+        "name": "thomas",
+        "science": 95,
+        "math": 80
+    },
+    {
+        "name": "ashley",
+        "science": 39,
+        "math": 30
+    }
+];
+
+console.log(data)
+
+function render(subject) {
+	d3.select('.bar')
+		.selectAll('div')
+		.remove()
+
+		d3.select('.bar')
+		.selectAll('div')
+		.data(data)
+		.enter()
+		.append('div')
+		.attr('class', 'graph')
+		.style('width', function(d){
+				return d[subject] + 'px';
+				})
+}
+</script>
+</body>
