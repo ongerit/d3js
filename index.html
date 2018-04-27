@@ -25,23 +25,17 @@
 <script src="//d3js.org/d3.v5.min.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", function(){
-setTimeout(changeColor, 1500);
-setTimeout(changeColor, 1500);
+		setTimeout(changeColor, 1500);
+		setTimeout(changeColor, 1500);
+		console.log('loaded content')
+		function changeColor(){
+		d3.select('svg').selectAll('circle').style('fill','#333');
+		}
 
-
-console.log('loaded content')
-function changeColor(){
- d3.select('svg').selectAll('circle').style('fill','#333');
-}
-
-function changeColorBack() {
- d3.select('svg').selectAll('circle').style('fill','#333');
-}
-
-//document.querySelector('p').innerHTML = `loaded script`
-//document.querySelector('p').innerHTML = 'play';
-
-})
+		function changeColorBack() {
+		d3.select('svg').selectAll('circle').style('fill','#333');
+		}
+		})
 
 const data = [
     {
@@ -61,14 +55,12 @@ const data = [
     }
 ];
 
-console.log(data)
-
 function render(subject) {
 	d3.select('.bar')
 		.selectAll('div')
-		.remove()
+		.remove();
 
-		d3.select('.bar')
+	d3.select('.bar')
 		.selectAll('div')
 		.data(data)
 		.enter()
